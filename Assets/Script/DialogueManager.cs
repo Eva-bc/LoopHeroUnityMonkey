@@ -4,8 +4,6 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    // rest of the code...
-
     public static DialogueManager Instance { get; private set; }
 
     [Header("UI References")]
@@ -16,6 +14,7 @@ public class DialogueManager : MonoBehaviour
 
     [Header("Visual Effect")]
     [SerializeField] private ParticleSystem dialogueCompleteEffect;
+    [SerializeField] private Button diceButton;
 
     private DialogueData currentDialogueData;
     private int currentLineIndex = 0;
@@ -53,6 +52,10 @@ public class DialogueManager : MonoBehaviour
         isDialogueActive = true;
 
         dialoguePanel.SetActive(true);
+
+        if (diceButton != null)
+            diceButton.interactable = false;
+
         DisplayCurrentLine();
     }
 
@@ -85,6 +88,9 @@ public class DialogueManager : MonoBehaviour
 
         if (dialogueCompleteEffect != null)
             dialogueCompleteEffect.Play();
+
+        if (diceButton != null)
+            diceButton.interactable = true;
 
         onDialogueCompleteCallback?.Invoke();
 

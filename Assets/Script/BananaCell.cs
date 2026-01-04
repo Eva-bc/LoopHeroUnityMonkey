@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BananaCell : Cell
 {
@@ -27,6 +27,11 @@ public class BananaCell : Cell
         if (GameStateManager.Instance != null)
         {
             GameStateManager.Instance.CollectBanana();
+        }
+
+        if (NotificationManager.Instance != null)
+        {
+            NotificationManager.Instance.ShowNotification("🍌 Banane collectée ! 🍌\nRetournez voir Johnny Kiki !");
         }
 
         if (bananaAnimator != null)
