@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1426a4eb90aa41949be5efa0f46c7065, type: 3}
+  m_Name: JohnnyKikiInitialDialogue
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueData
+  dialogueLines:
+  - speakerName: Johnny Kiki
+    text: Bienvenue grand singe ! Moi c'est Johnny Kiki le roi de cette ile !
+  - speakerName: Johnny Kiki
+    text: 'Comme tu l''aurais pas deviner, j''adore l''argent ! '
+  - speakerName: Johnny Kiki
+    text: Et tu ne peux pas rester sur cette ile sans travailler...
+  - speakerName: Johnny Kiki
+    text: "ALORS VA TRAVAILLER ! Ram\xE8ne moi une banane et peut-etre que tu pourras
+      te dorer la pillule."
