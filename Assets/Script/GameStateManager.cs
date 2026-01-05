@@ -6,6 +6,7 @@ public class GameStateManager : MonoBehaviour
 
     public bool hasBanana = false;
     public bool bananaQuestActive = false;
+    public bool isGameOver = false;
 
     private void Awake()
     {
@@ -37,5 +38,16 @@ public class GameStateManager : MonoBehaviour
     public bool HasBanana()
     {
         return hasBanana;
+    }
+
+    public void SetGameOver()
+    {
+        isGameOver = true;
+        Debug.Log("Game Over - Victory!");
+    }
+
+    public bool IsGameOver()
+    {
+        return isGameOver;
     }
 }

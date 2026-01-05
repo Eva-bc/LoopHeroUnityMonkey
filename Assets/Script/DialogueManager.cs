@@ -77,6 +77,11 @@ public class DialogueManager : MonoBehaviour
         if (!isDialogueActive)
             return;
 
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlayButtonClick();
+        }
+
         currentLineIndex++;
         DisplayCurrentLine();
     }

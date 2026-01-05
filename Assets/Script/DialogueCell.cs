@@ -42,7 +42,6 @@ public class DialogueCell : Cell
             DialogueManager.Instance.StartDialogue(dialogueToShow, OnDialogueComplete);
         }
 
-        // Démarrer la quête de la banane si c'est le premier dialogue
         if (!shouldShowCompletedDialogue && requiresBanana && GameStateManager.Instance != null)
         {
             GameStateManager.Instance.StartBananaQuest();
@@ -67,6 +66,16 @@ public class DialogueCell : Cell
                 characterAnimator.SetTrigger("StartDance");
 
             Debug.Log("Johnny Kiki is pleased! Quest complete!");
+
+            if (GameStateManager.Instance != null)
+            {
+                GameStateManager.Instance.SetGameOver();
+            }
+
+            if (VictoryManager.Instance != null)
+            {
+                VictoryManager.Instance.ShowVictory();
+            }
         }
     }
 }

@@ -14,20 +14,17 @@ public class BananaCell : Cell
         if (isCollected)
             return;
 
-        // Vérifier si la quête est active
         if (GameStateManager.Instance != null && !GameStateManager.Instance.IsBananaQuestActive())
         {
-            // Montrer un message si le joueur essaie de prendre la banane sans avoir parlé à Johnny Kiki
             if (NotificationManager.Instance != null)
             {
-                NotificationManager.Instance.ShowNotification("🍌 Cette banane appartient à quelqu'un...");
+                NotificationManager.Instance.ShowNotification("🍌 Cette banane appartient à quelqu'un...\nPeut-être que Johnny Kiki sait quelque chose ?");
             }
             return;
         }
 
         CollectBanana();
     }
-
 
     private void CollectBanana()
     {
@@ -41,6 +38,11 @@ public class BananaCell : Cell
         if (NotificationManager.Instance != null)
         {
             NotificationManager.Instance.ShowNotification("🍌 Banane collectée ! 🍌\nRetournez voir Johnny Kiki !");
+        }
+
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlayCollectSound();
         }
 
         if (bananaAnimator != null)
