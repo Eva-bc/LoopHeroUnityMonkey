@@ -10,7 +10,7 @@ public class DialogueCell : Cell
     [SerializeField] private bool requiresBanana = false;
 
     [Header("Visual Feedback")]
-    [SerializeField] private Animator cellAnimator;
+    [SerializeField] private Animator characterAnimator;
     [SerializeField] private ParticleSystem celebrationEffect;
 
     private bool hasBeenActivatedBefore = false;
@@ -30,6 +30,11 @@ public class DialogueCell : Cell
             shouldShowCompletedDialogue = GameStateManager.Instance.HasBanana();
         }
 
+        if (characterAnimator != null)
+        {
+            characterAnimator.SetTrigger("StartTalk");
+        }
+
         DialogueData dialogueToShow = shouldShowCompletedDialogue ? completedDialogue : initialDialogue;
 
         if (dialogueToShow != null)
@@ -42,13 +47,18 @@ public class DialogueCell : Cell
 
     private void OnDialogueComplete()
     {
+        if (characterAnimator != null)
+        {
+            characterAnimator.SetTrigger("StopTalk");
+        }
+
         if (requiresBanana && GameStateManager.Instance != null && GameStateManager.Instance.HasBanana())
         {
             if (celebrationEffect != null)
                 celebrationEffect.Play();
 
-            if (cellAnimator != null)
-                cellAnimator.SetTrigger("Celebrate");
+            if (characterAnimator != null)
+                characterAnimator.SetTrigger("StartDance");
 
             Debug.Log("Johnny Kiki is pleased! Quest complete!");
         }
