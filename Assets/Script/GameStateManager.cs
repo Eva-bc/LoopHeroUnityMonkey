@@ -5,6 +5,7 @@ public class GameStateManager : MonoBehaviour
     public static GameStateManager Instance { get; private set; }
 
     public bool hasBanana = false;
+    public bool bananaQuestActive = false;
 
     private void Awake()
     {
@@ -14,6 +15,17 @@ public class GameStateManager : MonoBehaviour
             return;
         }
         Instance = this;
+    }
+
+    public void StartBananaQuest()
+    {
+        bananaQuestActive = true;
+        Debug.Log("Banana quest started! Go find the banana!");
+    }
+
+    public bool IsBananaQuestActive()
+    {
+        return bananaQuestActive;
     }
 
     public void CollectBanana()

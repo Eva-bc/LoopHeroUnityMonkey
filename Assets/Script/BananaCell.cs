@@ -12,13 +12,22 @@ public class BananaCell : Cell
     public override void Activate(Pawn CurrentPawn)
     {
         if (isCollected)
+            return;
+
+        // Vérifier si la quête est active
+        if (GameStateManager.Instance != null && !GameStateManager.Instance.IsBananaQuestActive())
         {
-            Debug.Log("Banana already collected!");
+            // Montrer un message si le joueur essaie de prendre la banane sans avoir parlé à Johnny Kiki
+            if (NotificationManager.Instance != null)
+            {
+                NotificationManager.Instance.ShowNotification("🍌 Cette banane appartient à quelqu'un...");
+            }
             return;
         }
 
         CollectBanana();
     }
+
 
     private void CollectBanana()
     {

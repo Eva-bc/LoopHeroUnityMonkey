@@ -42,6 +42,12 @@ public class DialogueCell : Cell
             DialogueManager.Instance.StartDialogue(dialogueToShow, OnDialogueComplete);
         }
 
+        // Démarrer la quête de la banane si c'est le premier dialogue
+        if (!shouldShowCompletedDialogue && requiresBanana && GameStateManager.Instance != null)
+        {
+            GameStateManager.Instance.StartBananaQuest();
+        }
+
         hasBeenActivatedBefore = true;
     }
 
