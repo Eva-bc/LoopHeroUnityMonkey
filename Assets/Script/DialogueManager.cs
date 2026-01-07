@@ -38,7 +38,7 @@ public class DialogueManager : MonoBehaviour
             continueButton.onClick.AddListener(OnContinueClicked);
     }
 
-    public void StartDialogue(DialogueData dialogueData, System.Action onComplete = null)
+    public void StartDialogue(DialogueData dialogueData, System.Action onComplete = null, int startLineIndex = 0)
     {
         if (dialogueData == null || dialogueData.dialogueLines.Length == 0)
         {
@@ -47,7 +47,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         currentDialogueData = dialogueData;
-        currentLineIndex = 0;
+        currentLineIndex = Mathf.Clamp(startLineIndex, 0, dialogueData.dialogueLines.Length - 1);
         onDialogueCompleteCallback = onComplete;
         isDialogueActive = true;
 
@@ -106,5 +106,10 @@ public class DialogueManager : MonoBehaviour
     public bool IsDialogueActive()
     {
         return isDialogueActive;
+    }
+
+    public int GetCurrentLineIndex()
+    {
+        return currentLineIndex;
     }
 }

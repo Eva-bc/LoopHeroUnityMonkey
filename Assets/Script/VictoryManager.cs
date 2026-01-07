@@ -66,4 +66,15 @@ public class VictoryManager : MonoBehaviour
             Application.Quit();
 #endif
     }
+    public void ShowGameOver(string message)
+    {
+        if (victoryText != null)
+        {
+            victoryText.text = message;
+        }
+
+        DisplayVictoryPanel();
+    }
+
 }
+

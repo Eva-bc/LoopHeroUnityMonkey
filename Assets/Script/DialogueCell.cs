@@ -13,7 +13,8 @@ public class DialogueCell : Cell
     [SerializeField] private Animator characterAnimator;
     [SerializeField] private ParticleSystem celebrationEffect;
 
-    private bool hasBeenActivatedBefore = false;
+    private int savedLineIndex = 0;
+    private bool hasCompletedInitialDialogue = false;
 
     public override void Activate(Pawn CurrentPawn)
     {
@@ -39,15 +40,14 @@ public class DialogueCell : Cell
 
         if (dialogueToShow != null)
         {
-            DialogueManager.Instance.StartDialogue(dialogueToShow, OnDialogueComplete);
+            int startIndex = shouldShowCompletedDialogue ? 0 : (hasCompletedInitialDialogue ? savedLineIndex : 0);
+            DialogueManager.Instance.StartDialogue(dialogueToShow, OnDialogueComplete, startIndex);
         }
 
-        if (!shouldShowCompletedDialogue && requiresBanana && GameStateManager.Instance != null)
+        if (!shouldShowCompletedDialogue && requiresBanana && GameStateManager.Instance != null && !hasCompletedInitialDialogue)
         {
             GameStateManager.Instance.StartBananaQuest();
         }
-
-        hasBeenActivatedBefore = true;
     }
 
     private void OnDialogueComplete()
@@ -57,7 +57,20 @@ public class DialogueCell : Cell
             characterAnimator.SetTrigger("StopTalk");
         }
 
-        if (requiresBanana && GameStateManager.Instance != null && GameStateManager.Instance.HasBanana())
+        bool isCompletedDialogue = requiresBanana && GameStateManager.Instance != null && GameStateManager.Instance.HasBanana();
+
+        if (!isCompletedDialogue)
+        {
+            savedLineIndex = DialogueManager.Instance.GetCurrentLineIndex();
+
+            if (savedLineIndex >= initialDialogue.dialogueLines.Length)
+            {
+                hasCompletedInitialDialogue = true;
+                savedLineIndex = initialDialogue.dialogueLines.Length - 1;
+            }
+        }
+
+        if (isCompletedDialogue)
         {
             if (celebrationEffect != null)
                 celebrationEffect.Play();
