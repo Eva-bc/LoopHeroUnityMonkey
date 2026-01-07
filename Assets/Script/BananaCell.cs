@@ -18,7 +18,7 @@ public class BananaCell : Cell
         {
             if (NotificationManager.Instance != null)
             {
-                NotificationManager.Instance.ShowNotification("🍌 Cette banane appartient à quelqu'un...\nPeut-être que Johnny Kiki sait quelque chose ?");
+                NotificationManager.Instance.ShowNotification("Cette banane appartient à quelqu'un...");
             }
             return;
         }
