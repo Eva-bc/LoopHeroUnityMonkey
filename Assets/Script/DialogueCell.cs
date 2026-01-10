@@ -76,7 +76,7 @@ public class DialogueCell : Cell
                 celebrationEffect.Play();
 
             if (characterAnimator != null)
-                characterAnimator.SetTrigger("StartDance");
+                characterAnimator.SetTrigger("StartDancing");
 
             Debug.Log("Johnny Kiki is pleased! Quest complete!");
 
