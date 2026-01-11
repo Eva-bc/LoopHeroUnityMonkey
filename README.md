@@ -1,0 +1,8 @@
+Dans le jeu, il y a un système de déplacement qui se fait aléatoirement par un lancement de dé. On retrouve 4 cases différentes : 2 cases liés à un systéme de réputation, une case dialogue et une case banane.
+Parmis les deux cases liés au système de réputation on trouve la case poubelle : si le joueur la récolte, il perd des points. Si cependant il tombe sur la case avec la pièce, il gagne de la réputation.
+Si le joueur tombe sur la case banane avant d'avoir parlé à Johnny Kiki (le personnage dialogue), un texte s'affiche affirmant que la banane appartient à quelqu'un d'autre, ainsi, pour l'instant, il ne peut pas la récolter.
+Si il va parler à Johnny Kiki, un dialogue va se lancer : le joueur ne peut pas rester sur cette ile en faisant rien, il doit lui ramener sa banane.
+Deux choix s'offrent au joueur : accepter et le jeu continue, ou alors, refuser et Johnny Kiki bannira le joueur de l'ile (fin du jeu). Si le jeu continu, le joueur devra tomber sur la case banane (l'asset disparait) et un texte confirme que le joueur l'a bien récolté.
+Le joueur peut la ramener à Johnny Kiki, il est content et c'est une victoire. Un écran de fin s'affiche, le joueur peut rejouer ou quitter le jeu.
+En plus de cela, on retrouve du Sound Design (musique principale, lancement de dé, passer dialogue, feedback quand un élément est récolté). Pour les animations, Johnny kiki a une pose Idle, Talk (quand le joueur lui parle) et Danse quand le menu de victoire se lance.
+Pour les FX, il y en a un seulement quand le joueur récolte la banane (des particules jaunes).
