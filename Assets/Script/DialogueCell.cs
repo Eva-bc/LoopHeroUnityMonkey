@@ -136,7 +136,7 @@ public class DialogueCell : Cell
 
         if (VictoryManager.Instance != null)
         {
-            VictoryManager.Instance.ShowGameOver("💀 GAME OVER\n\nTu as refusé de travailler pour Johnny Kiki...\nTu as été expulsé de l'île !");
+            VictoryManager.Instance.ShowGameOver(" GAME OVER !");
         }
     }
 
