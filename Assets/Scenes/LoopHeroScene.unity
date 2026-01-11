@@ -732,6 +732,7 @@ RectTransform:
   - {fileID: 258962352}
   - {fileID: 1338804449}
   - {fileID: 168454206}
+  - {fileID: 774304676}
   m_Father: {fileID: 618310463}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1384,6 +1385,8 @@ MonoBehaviour:
   speakerNameText: {fileID: 258962353}
   dialogueText: {fileID: 1338804450}
   continueButton: {fileID: 168454207}
+  choicesContainer: {fileID: 774304675}
+  choiceButtonPrefab: {fileID: 581813697521366380, guid: bf81447933f2e024087e431eb4f29c58, type: 3}
   dialogueCompleteEffect: {fileID: 0}
   diceButton: {fileID: 0}
 --- !u!4 &524937642
@@ -2345,6 +2348,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2394d8840d58610488b042b7c40a5078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cell
+--- !u!1 &774304675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 774304676}
+  - component: {fileID: 774304677}
+  m_Layer: 5
+  m_Name: ChoicesContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &774304676
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774304675}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 181188201}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 100}
+  m_SizeDelta: {x: 500, y: 200}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &774304677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774304675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.VerticalLayoutGroup
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 7
+  m_Spacing: 10
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!114 &854935962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3836,7 +3901,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueCell
   initialDialogue: {fileID: 11400000, guid: f1027538ec7ddc0409162c42e5993aa8, type: 2}
+  questChoiceDialogue: {fileID: 11400000, guid: 9f7d799fb2abfba4d97667d917c63e7c, type: 2}
   completedDialogue: {fileID: 11400000, guid: 2e4b92622be7f9646850d5439eea6363, type: 2}
+  refusalDialogue: {fileID: 11400000, guid: b5e74a08cf74fb54abcd2551e26768e1, type: 2}
   requiresBanana: 1
   characterAnimator: {fileID: 512089437}
   celebrationEffect: {fileID: 0}
