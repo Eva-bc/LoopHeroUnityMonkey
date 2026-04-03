@@ -10,6 +10,8 @@ namespace HideAndSeek
         [Header("Vision Cone")]
         [SerializeField] private float visionRange = 10f;
         [SerializeField] [Range(10f, 180f)] private float visionAngle = 60f;
+
+        [Tooltip("Layers that block vision (e.g. Walls). Leave empty to ignore all obstacles.")]
         [SerializeField] private LayerMask obstructionMask;
 
         private Transform _playerTransform;
@@ -40,8 +42,8 @@ namespace HideAndSeek
             float angle = Vector3.Angle(transform.forward, directionToPlayer);
             if (angle > visionAngle * 0.5f) return false;
 
-            // Linecast to check for obstacles between eye and player
-            if (Physics.Linecast(eyePosition, playerChestPosition, obstructionMask))
+            // Linecast to check for obstacles — only if a mask is configured
+            if (obstructionMask.value != 0 && Physics.Linecast(eyePosition, playerChestPosition, obstructionMask))
                 return false;
 
             return true;
