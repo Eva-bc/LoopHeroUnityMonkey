@@ -24,6 +24,7 @@ namespace HideAndSeek
         {
             _characterController = GetComponent<CharacterController>();
 
+            // Always resolve the main camera — the serialized field is a fallback override
             if (cameraTransform == null)
                 cameraTransform = Camera.main != null ? Camera.main.transform : transform;
         }
@@ -36,7 +37,9 @@ namespace HideAndSeek
         private void Update()
         {
             if (!_isAlive) return;
+            if (GameManager.Instance != null && GameManager.Instance.IsGameOver) return;
 
+            // Camera-relative movement on XZ plane
             Vector3 forward = cameraTransform.forward;
             Vector3 right   = cameraTransform.right;
             forward.y = 0f;
@@ -46,8 +49,9 @@ namespace HideAndSeek
 
             Vector3 moveDirection = (forward * _moveInput.y + right * _moveInput.x).normalized;
 
+            // Gravity
             if (_characterController.isGrounded)
-                _verticalVelocity = -2f;
+                _verticalVelocity = -2f;   // small negative keeps the controller grounded
             else
                 _verticalVelocity += gravity * Time.deltaTime;
 
@@ -62,21 +66,12 @@ namespace HideAndSeek
             }
         }
 
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.CompareTag("Banana"))
-            {
-                GameManager.Instance.OnBananaCollected();
-                Destroy(other.gameObject);
-            }
-        }
-
         /// <summary>
-        /// Freezes the player on game over.
+        /// Freezes the player on game over or victory.
         /// </summary>
         public void Die()
         {
-            _isAlive = false;
+            _isAlive   = false;
             _moveInput = Vector2.zero;
         }
     }

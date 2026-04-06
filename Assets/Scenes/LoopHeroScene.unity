@@ -1452,7 +1452,14 @@ Animator:
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed
+    by Humanoid clips.\n\tTransform 'mixamorig1:Hips'\n\tTransform 'mixamorig1:LeftHandThumb1'\n\tTransform
+    'mixamorig1:LeftHandPinky2'\n\tTransform 'mixamorig1:RightHand'\n\tTransform
+    'mixamorig1:LeftHandMiddle2'\n\tTransform 'mixamorig1:RightFoot'\n\tTransform
+    'mixamorig1:Spine1'\n\tTransform 'mixamorig1:RightLeg'\n\tTransform 'mixamorig1:RightHandMiddle2'\n\tTransform
+    'mixamorig1:Hips'\n\tand more ...\n\tFrom animation clip 'mixamo.com'\n\tFrom
+    animation clip 'mixamo.com'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -1635,7 +1642,7 @@ MonoBehaviour:
   - {fileID: 1426446771}
   - {fileID: 1295368276}
   - {fileID: 1544915198}
-  - {fileID: 1671194236}
+  - {fileID: 1267494740}
   - {fileID: 2087427797}
   - {fileID: 1484510489}
   - {fileID: 1754928749}
@@ -1645,7 +1652,7 @@ MonoBehaviour:
   - {fileID: 854935962}
   - {fileID: 1478728284}
   - {fileID: 1406518909}
-  - {fileID: 1940752757}
+  - {fileID: 1940752761}
   - {fileID: 2108789423}
   - {fileID: 953069635}
 --- !u!1 &564803802
@@ -2663,6 +2670,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 868780094}
   m_CullTransparentMesh: 1
+--- !u!1 &905655254 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2c3afef3464b8c14bb4999d22b3dd924, type: 3}
+  m_PrefabInstance: {fileID: 661901304}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &953069635 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6117848067103990381, guid: fbddf2ae988855541abbb45f76929fdc, type: 3}
@@ -2779,7 +2791,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8691512453110186098, guid: fbddf2ae988855541abbb45f76929fdc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1940752761}
   m_SourcePrefab: {fileID: 100100000, guid: fbddf2ae988855541abbb45f76929fdc, type: 3}
 --- !u!4 &969133183 stripped
 Transform:
@@ -3165,6 +3180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1150705815}
   - component: {fileID: 1150705814}
+  - component: {fileID: 1150705816}
   m_Layer: 0
   m_Name: GameStateManager
   m_TagString: Untagged
@@ -3206,6 +3222,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1150705816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150705813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6da68664448de48ae2b3f11c7ab586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HideAndSeekResultHandler
+  sessionData: {fileID: 11400000, guid: b6de2a7abae2d314f8ca612112e8bc1d, type: 2}
+  victoryReputationGain: 15
+  defeatReputationLoss: 10
 --- !u!1 &1168518132
 GameObject:
   m_ObjectHideFlags: 0
@@ -3777,13 +3808,28 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8691512453110186098, guid: fbddf2ae988855541abbb45f76929fdc, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1671194236}
+      addedObject: {fileID: 1267494740}
   m_SourcePrefab: {fileID: 100100000, guid: fbddf2ae988855541abbb45f76929fdc, type: 3}
 --- !u!4 &1267494735 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6618729178232160858, guid: fbddf2ae988855541abbb45f76929fdc, type: 3}
   m_PrefabInstance: {fileID: 1267494734}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1267494740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378768541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfc748996f6196945a0c5018676b7c70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BananaCell
+  bananaVisual: {fileID: 905655254}
+  bananaAnimator: {fileID: 0}
+  collectEffect: {fileID: 1753152168}
 --- !u!1001 &1295368269
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4801,6 +4847,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628562783}
   m_CullTransparentMesh: 1
+--- !u!1 &1631257666 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8691512453110186098, guid: fbddf2ae988855541abbb45f76929fdc, type: 3}
+  m_PrefabInstance: {fileID: 969133182}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1668078449
 GameObject:
   m_ObjectHideFlags: 0
@@ -4919,21 +4970,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NotificationManager
   notificationText: {fileID: 1209315637}
   displayDuration: 3
---- !u!114 &1671194236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 378768541}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfc748996f6196945a0c5018676b7c70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BananaCell
-  bananaVisual: {fileID: 1931418803}
-  bananaAnimator: {fileID: 0}
-  collectEffect: {fileID: 1753152168}
 --- !u!1 &1679867908
 GameObject:
   m_ObjectHideFlags: 0
@@ -10158,27 +10194,26 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09dfa160f08043d478e3b0ad7867edd9, type: 3}
---- !u!1 &1931418803 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2c3afef3464b8c14bb4999d22b3dd924, type: 3}
-  m_PrefabInstance: {fileID: 661901304}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1931418806 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2c3afef3464b8c14bb4999d22b3dd924, type: 3}
   m_PrefabInstance: {fileID: 661901304}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1940752757 stripped
+--- !u!114 &1940752761
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6117848067103990381, guid: fbddf2ae988855541abbb45f76929fdc, type: 3}
-  m_PrefabInstance: {fileID: 969133182}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1631257666}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2394d8840d58610488b042b7c40a5078, type: 3}
+  m_Script: {fileID: 11500000, guid: 8804d5c96f2e74e4eb13fb660c4e6e40, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Cell
+  m_EditorClassIdentifier: Assembly-CSharp::HideAndSeekCell
+  sessionData: {fileID: 11400000, guid: b6de2a7abae2d314f8ca612112e8bc1d, type: 2}
+  activationMessage: "Johnny Kiki te surveille... r\xE9cup\xE8re la banane sans te
+    faire rep\xE9rer !"
 --- !u!1 &1972402283
 GameObject:
   m_ObjectHideFlags: 0

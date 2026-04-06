@@ -1,5 +1,4 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,68 +6,103 @@ using UnityEngine.UI;
 namespace HideAndSeek
 {
     /// <summary>
-    /// Manages the in-game UI panels: Game Over and Victory screens.
+    /// Manages the in-game UI panels for the HideAndSeek mini-game.
+    ///
+    /// Victory  : fade-in → hold <victoryHoldDuration>s → load LoopHeroScene (automatic).
+    /// Game Over: fade-in → player clicks Restart → reload HideAndSeekScene.
     /// </summary>
     public class HideAndSeekUIManager : MonoBehaviour
     {
+        private const string MainSceneName    = "LoopHeroScene";
+        private const string MiniGameSceneName = "HideAndSeekScene";
+
         [Header("Panels")]
         [SerializeField] private GameObject gameOverPanel;
         [SerializeField] private GameObject victoryPanel;
 
-        [Header("Buttons")]
+        [Header("Game Over button")]
         [SerializeField] private Button restartButton;
-        [SerializeField] private Button victoryRestartButton;
 
-        [Header("Fade")]
-        [SerializeField] private CanvasGroup fadeCanvasGroup;
-        [SerializeField] private float fadeDuration = 0.6f;
+        [Header("Timing")]
+        [Tooltip("Seconds the victory panel stays visible before returning to LoopHeroScene.")]
+        [SerializeField] private float victoryHoldDuration = 2.5f;
+        [SerializeField] private float fadeDuration        = 0.6f;
 
         private void Awake()
         {
-            gameOverPanel?.SetActive(false);
-            victoryPanel?.SetActive(false);
+            // Hide panels and reset their CanvasGroups
+            InitPanel(gameOverPanel);
+            InitPanel(victoryPanel);
 
-            restartButton?.onClick.AddListener(RestartScene);
-            victoryRestartButton?.onClick.AddListener(RestartScene);
+            // Game Over → restart the mini-game
+            restartButton?.onClick.AddListener(ReloadMiniGame);
         }
 
-        /// <summary>
-        /// Displays the Game Over panel with a fade-in transition.
-        /// </summary>
+        /// <summary>Fades in the Game Over panel. Restart button reloads the mini-game.</summary>
         public void ShowGameOver()
         {
             StartCoroutine(FadeInPanel(gameOverPanel));
         }
 
-        /// <summary>
-        /// Displays the Victory panel with a fade-in transition.
-        /// </summary>
+        /// <summary>Fades in the Victory panel then automatically returns to LoopHeroScene.</summary>
         public void ShowVictory()
         {
-            StartCoroutine(FadeInPanel(victoryPanel));
+            StartCoroutine(VictorySequence());
+        }
+
+        // ── Sequences ────────────────────────────────────────────────────────────
+
+        private IEnumerator VictorySequence()
+        {
+            yield return FadeInPanel(victoryPanel);
+            yield return new WaitForSeconds(victoryHoldDuration);
+            SceneManager.LoadScene(MainSceneName);
+        }
+
+        // ── Helpers ──────────────────────────────────────────────────────────────
+
+        /// <summary>Resets a panel to its hidden state (inactive, alpha 0, no raycasts).</summary>
+        private static void InitPanel(GameObject panel)
+        {
+            if (panel == null) return;
+            panel.SetActive(false);
+
+            CanvasGroup cg = panel.GetComponent<CanvasGroup>();
+            if (cg == null) return;
+            cg.alpha          = 0f;
+            cg.blocksRaycasts = false;
+            cg.interactable   = false;
         }
 
         private IEnumerator FadeInPanel(GameObject panel)
         {
-            panel?.SetActive(true);
+            if (panel == null) yield break;
 
-            if (fadeCanvasGroup != null)
+            panel.SetActive(true);
+
+            CanvasGroup cg = panel.GetComponent<CanvasGroup>();
+            if (cg == null) yield break;
+
+            cg.alpha          = 0f;
+            cg.blocksRaycasts = false;
+            cg.interactable   = false;
+
+            float elapsed = 0f;
+            while (elapsed < fadeDuration)
             {
-                fadeCanvasGroup.alpha = 0f;
-                float elapsed = 0f;
-                while (elapsed < fadeDuration)
-                {
-                    elapsed += Time.deltaTime;
-                    fadeCanvasGroup.alpha = Mathf.Clamp01(elapsed / fadeDuration);
-                    yield return null;
-                }
-                fadeCanvasGroup.alpha = 1f;
+                elapsed  += Time.deltaTime;
+                cg.alpha  = Mathf.Clamp01(elapsed / fadeDuration);
+                yield return null;
             }
+
+            cg.alpha          = 1f;
+            cg.blocksRaycasts = true;
+            cg.interactable   = true;
         }
 
-        private void RestartScene()
+        private static void ReloadMiniGame()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene(MiniGameSceneName);
         }
     }
 }
