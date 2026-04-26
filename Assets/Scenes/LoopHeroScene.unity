@@ -737,7 +737,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 7.200012, y: 10.1}
+  m_AnchoredPosition: {x: 7.200012, y: 10.099976}
   m_SizeDelta: {x: -179.88998, y: -358.20007}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &181188202
@@ -1454,11 +1454,10 @@ Animator:
   m_AnimatePhysics: 0
   m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
     are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'mixamorig1:Hips'\n\tTransform 'mixamorig1:LeftHandThumb1'\n\tTransform
-    'mixamorig1:LeftHandPinky2'\n\tTransform 'mixamorig1:RightHand'\n\tTransform
-    'mixamorig1:LeftHandMiddle2'\n\tTransform 'mixamorig1:RightFoot'\n\tTransform
-    'mixamorig1:Spine1'\n\tTransform 'mixamorig1:RightLeg'\n\tTransform 'mixamorig1:RightHandMiddle2'\n\tTransform
-    'mixamorig1:Hips'\n\tand more ...\n\tFrom animation clip 'mixamo.com'\n\tFrom
+    by Humanoid clips.\n\tTransform 'mixamorig1:Hips'\n\tTransform 'mixamorig1:RightHand'\n\tTransform
+    'mixamorig1:RightFoot'\n\tTransform 'mixamorig1:Spine1'\n\tTransform 'mixamorig1:RightLeg'\n\tTransform
+    'mixamorig1:Hips'\n\tTransform 'mixamorig1:RightArm'\n\tTransform 'mixamorig1:LeftHandMiddle1'\n\tTransform
+    'mixamorig1:Spine2'\n\tTransform 'mixamorig1:LeftToeBase'\n\tand more ...\n\tFrom
     animation clip 'mixamo.com'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -2930,6 +2929,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 561741818}
     m_Modifications:
+    - target: {fileID: 6060825076959092928, guid: fbddf2ae988855541abbb45f76929fdc, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 79dd82ceb4d362442b51cbef43440c77, type: 2}
     - target: {fileID: 6618729178232160858, guid: fbddf2ae988855541abbb45f76929fdc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2
@@ -2977,11 +2980,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8691512453110186098, guid: fbddf2ae988855541abbb45f76929fdc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1891321876}
   m_SourcePrefab: {fileID: 100100000, guid: fbddf2ae988855541abbb45f76929fdc, type: 3}
 --- !u!4 &987866676 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6618729178232160858, guid: fbddf2ae988855541abbb45f76929fdc, type: 3}
+  m_PrefabInstance: {fileID: 987866675}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &987866677 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8691512453110186098, guid: fbddf2ae988855541abbb45f76929fdc, type: 3}
   m_PrefabInstance: {fileID: 987866675}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1069204821
@@ -3181,6 +3192,7 @@ GameObject:
   - component: {fileID: 1150705815}
   - component: {fileID: 1150705814}
   - component: {fileID: 1150705816}
+  - component: {fileID: 1150705817}
   m_Layer: 0
   m_Name: GameStateManager
   m_TagString: Untagged
@@ -3237,6 +3249,20 @@ MonoBehaviour:
   sessionData: {fileID: 11400000, guid: b6de2a7abae2d314f8ca612112e8bc1d, type: 2}
   victoryReputationGain: 15
   defeatReputationLoss: 10
+--- !u!114 &1150705817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150705813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 111a951275600e544bf58f40121cd8d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinigameResultHandler
+  sessionData: {fileID: 11400000, guid: 49cd5efb907057a41a0d2c4994f3f290, type: 2}
+  victoryReputationGain: 15
 --- !u!1 &1168518132
 GameObject:
   m_ObjectHideFlags: 0
@@ -4614,7 +4640,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -343.9, y: 21.6}
+  m_AnchoredPosition: {x: -343.90002, y: 21.599976}
   m_SizeDelta: {x: 142.2998, y: 80}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1617422951
@@ -10119,12 +10145,26 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6117848067103990381, guid: fbddf2ae988855541abbb45f76929fdc, type: 3}
   m_PrefabInstance: {fileID: 987866675}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 987866677}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2394d8840d58610488b042b7c40a5078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cell
+--- !u!114 &1891321876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987866677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b0e62966e22c974787fbfe6e4f37050, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinigameCell
+  sessionData: {fileID: 11400000, guid: 49cd5efb907057a41a0d2c4994f3f290, type: 2}
+  activationMessage: Collecte les 5 bananes pour ouvrir la porte !
 --- !u!1001 &1894276108
 PrefabInstance:
   m_ObjectHideFlags: 0
