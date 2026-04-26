@@ -6,3 +6,11 @@ Deux choix s'offrent au joueur : accepter et le jeu continue, ou alors, refuser 
 Le joueur peut la ramener à Johnny Kiki, il est content et c'est une victoire. Un écran de fin s'affiche, le joueur peut rejouer ou quitter le jeu.
 En plus de cela, on retrouve du Sound Design (musique principale, lancement de dé, passer dialogue, feedback quand un élément est récolté). Pour les animations, Johnny kiki a une pose Idle, Talk (quand le joueur lui parle) et Danse quand le menu de victoire se lance.
 Pour les FX, il y en a un seulement quand le joueur récolte la banane (des particules jaunes).
+
+Mini jeu avec IA :
+
+Dans l'une des cases de la scène Loop Hero, on peut accéder à la scène Hide and Seek, dans cette map, on retrouve : Johnny Kiki (AI) qui a des animations de patrouille, et une banane qui est collectable. Pour réussir le mini jeu, il faut attraper la banane sans que Johny Kiki nous attrape en premier. Dès que Johnny Kiki touche le joueur : il perd immédiatement la partie, et un menu s'affiche en proposant l'option de recommencer. Si le joueur prend la banane, un menu victoire s'affiche et le joueur est redirigé vers la scène Loop Hero. De plus, sa barre de réputation augmente.
+
+Mini jeu sans IA :
+
+En passant par la case violette de la scène Loop Hero, le joueur sera envoyé dans la scène Minigame. Dans celle-ci, 5 bananes seront mises à disposition, il devra les récolter, ce qui mettra à jour l'HUD en haut à droite informant le nombre de banane qu'a obtenu le joueur et combien il lui en reste pouèr remplir l'objectif. Une fois que les 5 bananes sont récoltées, la porte s'ouvre et un texte s'affiche indiquant au joueur qu'il a réussit le niveau. Il est renvoyé vers la scène Loop Hero et obtient des points qui lui permettent d'augmenter sa barre de réoutation.
